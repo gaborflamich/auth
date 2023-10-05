@@ -1,0 +1,22 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="card">
+  <div class="mb-3">
+    <label for="email" class="form-label">Email address</label>
+    <input
+      formControlName="formEmail"
+      type="email"
+      class="form-control"
+      id="email"
+      aria-describedby="emailHelp"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input
+      formControlName="formPassword"
+      type="password"
+      class="form-control"
+      id="password"
+    />
+  </div>
+  <button type="submit" class="btn btn-dark">Submit</button>
+</form>
