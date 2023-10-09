@@ -8,13 +8,14 @@ import {
 } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
+import { LoginStateComponent } from '../login-state/login-state.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, LoginStateComponent],
 })
 export class LoginComponent {
   public errorMessage: string | null = null;

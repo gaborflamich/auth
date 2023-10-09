@@ -1,8 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { LoginStateComponent } from '../login-state/login-state.component';
+import { Observable, map } from 'rxjs';
+import { Firestore, collectionData } from '@angular/fire/firestore';
+import { Client } from 'src/app/interfaces/client';
+import { collection, query } from 'firebase/firestore';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,8 +15,11 @@ import { LoginStateComponent } from '../login-state/login-state.component';
   imports: [CommonModule, RouterModule, LoginStateComponent],
 })
 export class DashboardComponent {
-  constructor(
-    private readonly auth: AngularFireAuth,
-    private readonly router: Router
-  ) {}
+  // clients$: Observable<Client[]>;
+  // constructor(firestore: Firestore) {
+  //   const itemCollectionQuery = query(collection(firestore, 'clients'));
+  //   this.clients$ = collectionData(itemCollectionQuery, { idField: 'id' }).pipe(
+  //     map((data) => data.map((item) => item as Client))
+  //   );
+  // }
 }

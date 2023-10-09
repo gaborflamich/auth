@@ -1,0 +1,54 @@
+<div class="container">
+  <h1 class="mb-4">Registration</h1>
+  <p *ngIf="error">{{ error }}</p>
+  <form [formGroup]="regForm" (ngSubmit)="createAccount()" class="card">
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input
+        formControlName="formEmail"
+        type="email"
+        class="form-control"
+        id="email"
+      />
+      <div
+        *ngIf="regForm.controls['formEmail'].errors?.['required'] && regForm.controls['formEmail'].touched"
+        class="text-danger"
+      >
+        Email field is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input
+        formControlName="formPassword"
+        type="password"
+        class="form-control"
+        id="password"
+      />
+      <div
+        *ngIf="regForm.controls['formPassword'].errors?.['required'] && regForm.controls['formPassword'].touched"
+        class="text-danger"
+      >
+        Password field is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Confirm Password</label>
+      <input
+        formControlName="formPassword"
+        type="password"
+        class="form-control"
+        id="password"
+      />
+      <div
+        *ngIf="regForm.controls['formPassword'].errors?.['required'] && regForm.controls['formPassword'].touched"
+        class="text-danger"
+      >
+        Password field is required.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-dark">Submit</button>
+  </form>
+</div>

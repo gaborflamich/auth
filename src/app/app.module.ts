@@ -9,12 +9,15 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 
-import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginStateComponent } from './components/login-state/login-state.component';
 import { LoginButtonsComponent } from './components/login-buttons/login-buttons.component';
-// import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { RegistrationComponent } from './components/registration/registration.component';
+// import { provideFirebaseApp } from '@angular/fire/app';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,12 +29,13 @@ import { LoginButtonsComponent } from './components/login-buttons/login-buttons.
     LoginButtonsComponent,
     BrowserModule,
     LoginComponent,
+    RegistrationComponent,
     AppRoutingModule,
     NgbModule,
 
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    // AngularFirestoreModule,
+    provideFirestore(() => getFirestore()),
   ],
   providers: [],
   bootstrap: [AppComponent],

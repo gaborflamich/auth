@@ -1,6 +1,15 @@
-<button *ngIf="isLoggedIn" (click)="onLogout()" class="btn btn-light">
-  Logout
-</button>
-<button *ngIf="!isLoggedIn" class="btn btn-warning" routerLink="login">
-  Login
-</button>
+<div class="buttons">
+  <button
+    *ngIf="!isLoggedIn"
+    class="btn btn-outline-light mr-4"
+    routerLink="registration"
+  >
+    Registration
+  </button>
+  <button *ngIf="isLoggedIn" (click)="onLogout()" class="btn btn-light">
+    Logout
+  </button>
+  <button *ngIf="!isLoggedIn" class="btn btn-warning" routerLink="login">
+    Login
+  </button>
+</div>
