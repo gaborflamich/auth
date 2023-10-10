@@ -1,7 +1,7 @@
 <div class="container">
   <h1 class="mb-4">Registration</h1>
-  <p *ngIf="error">{{ error }}</p>
   <form [formGroup]="regForm" (ngSubmit)="createAccount()" class="card">
+    <div class="alert alert-danger" *ngIf="error">{{ error }}</div>
     <div class="mb-3">
       <label for="email" class="form-label">Email address</label>
       <input

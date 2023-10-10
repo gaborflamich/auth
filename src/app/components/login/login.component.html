@@ -3,6 +3,7 @@
     <h1 class="mb-4">Login</h1>
     <app-login-state></app-login-state>
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="card">
+      <p *ngIf="error">{{ error }}</p>
       <div class="mb-3">
         <label for="email" class="form-label">Email address</label>
         <input

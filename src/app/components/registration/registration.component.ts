@@ -23,9 +23,8 @@ export class RegistrationComponent {
   ) {}
 
   erroreMessageMap: any = {
-    'auth/wrong-password': 'The password is not correct',
+    'auth/email-already-in-use': 'An account with that email already exists',
     'auth/invalid-email': 'Please enter a valid email address',
-    'auth/user-not-found': 'There is no account with that email',
     'auth/internal-error':
       'Something went wrong. Please check your inputs and try again.',
   };
@@ -33,17 +32,27 @@ export class RegistrationComponent {
   regForm = new FormGroup({
     formEmail: new FormControl(),
     formPassword: new FormControl(),
+    formConfirmPassword: new FormControl(),
   });
 
   createAccount(): void {
     const email = this.regForm.get('formEmail')?.value;
     const password = this.regForm.get('formPassword')?.value;
-    console.log(email, password);
+    const confirmPassword = this.regForm.get('formConfirmPassword')?.value;
+    if (password !== confirmPassword) {
+      this.error = 'The passwords do not match!';
+    }
+
     this.auth
       .createUserWithEmailAndPassword(email, password)
       .then(() => this.router.navigate(['/']))
       .catch((error) => {
-        this.error = error.message;
+        for (let errorType of Object.keys(this.erroreMessageMap)) {
+          if (error.message.includes(errorType)) {
+            this.error = this.erroreMessageMap[errorType];
+            break;
+          }
+        }
       });
   }
 }
